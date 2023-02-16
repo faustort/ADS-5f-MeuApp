@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
 export default function HomeScreen() {
   return (
@@ -11,6 +11,21 @@ export default function HomeScreen() {
         justifyContent: "center",
       }}
     >
+      <View
+        style={{
+          flexBasis: "80%",
+        }}
+      >
+        <Image
+          source={{
+            uri: "https://picsum.photos/300/300",
+          }}
+          style={{
+            minWidth: "300px",
+            height: "300px",
+          }}
+        />
+      </View>
       <Text
         style={{
           color: "tomato",
