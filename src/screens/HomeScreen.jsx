@@ -1,16 +1,9 @@
 import { Image, Text, View } from "react-native";
+import styles from "../utils/styles";
 
 export default function HomeScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        padding: "20px",
-        backgroundColor: "#FFF",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <View style={styles.container}>
       <View
         style={{
           flexBasis: "80%",

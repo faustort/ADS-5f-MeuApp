@@ -1,8 +1,10 @@
-import HomeScreen from "./src/screens/HomeScreen";
-
+import { Provider as PaperProvider } from "react-native-paper";
+import RootNavigation from "./src";
 
 export default function App() {
   return (
-    <HomeScreen />
+    <PaperProvider>
+      <RootNavigation />
+    </PaperProvider>
   );
 }
