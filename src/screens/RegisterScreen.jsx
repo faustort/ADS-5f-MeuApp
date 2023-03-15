@@ -29,9 +29,9 @@ export default function RegisterScreen() {
         createUserWithEmailAndPassword(auth, email, senha).then(
             (userCredential) => {
                 console.log(userCredential, "Usuário registrado com sucesso");
+                navigation.navigate("LoginScreen");
             }
         ).catch((error) => {
-
             setError(error.message); // mostra a mensagem original do Firebase
             const errorCode = error.code; // obtém o código de erro do Firebase
             switch (errorCode) { // verifica qual é o código de erro

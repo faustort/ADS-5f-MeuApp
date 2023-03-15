@@ -18,6 +18,7 @@ export function SplashScreen({ navigation }) {
 
             <Image
                 source={{ uri: "https://picsum.photos/200" }}
+                // source={require("../../assets/icon.png")}
                 style={{ width: 200, height: 200, borderRadius: 999 }}
             />
             <ActivityIndicator />
