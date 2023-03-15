@@ -5,6 +5,7 @@ import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import HomeScreen from "./screens/HomeScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import { SplashScreen } from "./screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -12,6 +13,13 @@ export default function RootNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          component={SplashScreen}
+          name="SplashScreen"
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="RegisterScreen"
           component={RegisterScreen}
