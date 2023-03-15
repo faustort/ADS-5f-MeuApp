@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { View } from "react-native";
 import { Button, HelperText, Paragraph, TextInput } from "react-native-paper";
@@ -6,30 +6,19 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { auth } from "../config/firebase";
 
 import styles from "../utils/styles";
-export default function RegisterScreen() {
+export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [error, setError] = useState("");
 
   function handleRegister() {
-    console.log("Registrando usuário");
-    if (checkIfPasswordsMatch()) {
-      console.log("As senhas coincidem");
-    } else {
-      console.log("As senhas não coincidem");
-    }
-    if (checkPasswordLenght()) {
-      console.log("As senhas são grandonas");
-    } else {
-      console.log("As senhas são muito pequenas");
-    }
+    console.log("Login usuário");
 
-    createUserWithEmailAndPassword(auth, email, senha)
+    signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         console.log(userCredential, "Usuário registrado com sucesso");
-        navigation.navigate("LoginScreen");
+        navigation.navigate("MTBNavigation");
       })
       .catch((error) => {
         setError(error.message); // mostra a mensagem original do Firebase
@@ -47,22 +36,14 @@ export default function RegisterScreen() {
             setError("Essa senha é muito fraca.");
             break;
           default:
-            setError("Ocorreu um erro ao registrar o usuário.");
+            setError("Ocorreu um erro ao acessar com este e-mail e senha.");
         }
       });
   }
 
-  function checkIfPasswordsMatch() {
-    return senha === confirmarSenha;
-  }
-
-  function checkPasswordLenght() {
-    return senha.length >= 6;
-  }
-
   return (
     <View style={styles.container}>
-      <Paragraph>Faça o seu Registro</Paragraph>
+      <Paragraph>Faça o seu Login</Paragraph>
       <HelperText type="error"> {error} </HelperText>
       <View>
         <Paragraph>E-mail</Paragraph>
@@ -90,21 +71,18 @@ export default function RegisterScreen() {
           )}
         />
       </View>
-      <View>
-        <Paragraph>Confirme sua Senha</Paragraph>
-        <TextInput
-          mode="outlined"
-          placeholder="Confirme a Senha"
-          value={confirmarSenha}
-          onChangeText={setConfirmarSenha}
-          secureTextEntry={true}
-        />
-        <HelperText type="error" visible={!checkIfPasswordsMatch}>
-          Não conferem
-        </HelperText>
-      </View>
+
       <View style={{ marginTop: 20 }}>
         <Button mode="contained" onPress={handleRegister}>
+          Acessar
+        </Button>
+      </View>
+
+      <View style={{ marginTop: 20 }}>
+        <Button
+          mode="contained"
+          onPress={() => navigation.navigate("RegisterScreen")}
+        >
           Registrar
         </Button>
       </View>

@@ -4,7 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import SignOut from "./screens/SignOut";
 import { SplashScreen } from "./screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
@@ -16,6 +18,13 @@ export default function RootNavigation() {
         <Stack.Screen
           component={SplashScreen}
           name="SplashScreen"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="LoginScreen"
+          component={LoginScreen}
           options={{
             headerShown: false,
           }}
@@ -34,13 +43,6 @@ export default function RootNavigation() {
           options={{
             title: "Nav pricipal",
             headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{
-            title: "Inicial",
           }}
         />
       </Stack.Navigator>
@@ -76,6 +78,14 @@ export function MBTNavigation() {
         options={{
           title: "Contato",
           tabBarIcon: "phone-in-talk",
+        }}
+      />
+      <MTB.Screen
+        name="LogoutScreen"
+        component={SignOut}
+        options={{
+          title: "Sair",
+          tabBarIcon: "exit-to-app",
         }}
       />
     </MTB.Navigator>
