@@ -21,8 +21,7 @@ export default function HomeScreen() {
       </View>
       <Text
         style={{
-          color: "tomato",
-          fontSize: "34px",
+          fontSize: "22px",
         }}
       >
         Hola, bem vindo ao meu app
