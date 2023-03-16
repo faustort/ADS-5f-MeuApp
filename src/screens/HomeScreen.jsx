@@ -1,9 +1,13 @@
-import { Image, Text, View } from "react-native";
+import { Image, Text, useColorScheme, View } from "react-native";
 import styles from "../utils/styles";
+import themes from "../utils/theme";
 
 export default function HomeScreen() {
+  // const preferDarkMode = useColorScheme() === "dark";
+  // const theme = preferDarkMode ? themes.dark : themes.light;
+
   return (
-    <View style={styles.container}>
+    <View>
       <View
         style={{
           flexBasis: "80%",
