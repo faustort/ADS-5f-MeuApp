@@ -82,12 +82,14 @@ export default function RegisterScreen() {
           value={senha}
           onChangeText={setSenha}
           secureTextEntry={passwordVisible}
-          right={() => (
-            <Icon
-              name={passwordVisible ? "eye" : "eye-off"}
+          right={
+            <TextInput.Icon
+              icon={passwordVisible ? "eye" : "eye-off"}
+              size={20}
+              style={{ marginRight: 10 }}
               onPress={() => setPasswordVisible(!passwordVisible)}
             />
-          )}
+          }
         />
       </View>
       <View>
@@ -97,7 +99,15 @@ export default function RegisterScreen() {
           placeholder="Confirme a Senha"
           value={confirmarSenha}
           onChangeText={setConfirmarSenha}
-          secureTextEntry={true}
+          secureTextEntry={passwordVisible}
+          right={
+            <TextInput.Icon
+              icon={passwordVisible ? "eye" : "eye-off"}
+              size={20}
+              style={{ marginRight: 10 }}
+              onPress={() => setPasswordVisible(!passwordVisible)}
+            />
+          }
         />
         <HelperText type="error" visible={!checkIfPasswordsMatch}>
           Não conferem
