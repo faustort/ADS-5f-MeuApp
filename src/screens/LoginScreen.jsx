@@ -35,7 +35,7 @@ export default function LoginScreen({ navigation }) {
     signInWithEmailAndPassword(auth, email, senha)
       // caso a Promise seja resolvida, o usuário é logado
       .then((userCredential) => {
-        // 
+        //
         console.log(userCredential, "Usuário registrado com sucesso");
         navigation.navigate("MTBNavigation");
       })
@@ -83,12 +83,14 @@ export default function LoginScreen({ navigation }) {
           value={senha}
           onChangeText={setSenha}
           secureTextEntry={passwordVisible}
-          right={() => (
-            <Icon
-              name={passwordVisible ? "eye" : "eye-off"}
+          right={
+            <TextInput.Icon
+              icon={passwordVisible ? "eye" : "eye-off"}
+              size={20}
+              style={{ marginRight: 10 }}
               onPress={() => setPasswordVisible(!passwordVisible)}
             />
-          )}
+          }
         />
       </View>
 
