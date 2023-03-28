@@ -79,7 +79,6 @@ export default function LoginScreen({ navigation }) {
       </View>
       <View>
         <Paragraph>Senha</Paragraph>
-
         <TextInput
           mode="outlined"
           placeholder="Digite sua Senha"
@@ -97,7 +96,6 @@ export default function LoginScreen({ navigation }) {
           }
         />
       </View>
-
       <View style={{ flexDirection: "row", gap: 15 }}>
         <View style={{ marginTop: 20 }}>
           <Button

@@ -35,7 +35,7 @@ export default function RegisterScreen() {
         setError(error.message); // mostra a mensagem original do Firebase
         const errorCode = error.code; // obtém o código de erro do Firebase
         switch (
-          errorCode // verifica qual é o código de erro
+        errorCode // verifica qual é o código de erro
         ) {
           case "auth/email-already-in-use":
             setError("Esse email já está em uso por outro usuário."); // mostra uma mensagem humanizada
@@ -71,17 +71,20 @@ export default function RegisterScreen() {
           placeholder="Digite seu e-mail"
           value={email}
           onChangeText={setEmail}
+          style={styles.maxWidth}
         />
       </View>
-      <View>
+      <View style={{ marginTop: 10 }}>
         <Paragraph>Senha</Paragraph>
 
         <TextInput
-          mode="flat"
+          mode="outlined"
           placeholder="Digite sua Senha"
           value={senha}
           onChangeText={setSenha}
           secureTextEntry={passwordVisible}
+          style={styles.maxWidth}
+
           right={
             <TextInput.Icon
               icon={passwordVisible ? "eye" : "eye-off"}
@@ -92,7 +95,7 @@ export default function RegisterScreen() {
           }
         />
       </View>
-      <View>
+      <View style={{ marginTop: 10 }}>
         <Paragraph>Confirme sua Senha</Paragraph>
         <TextInput
           mode="outlined"
@@ -100,6 +103,7 @@ export default function RegisterScreen() {
           value={confirmarSenha}
           onChangeText={setConfirmarSenha}
           secureTextEntry={passwordVisible}
+          style={styles.maxWidth}
           right={
             <TextInput.Icon
               icon={passwordVisible ? "eye" : "eye-off"}
@@ -113,7 +117,7 @@ export default function RegisterScreen() {
           Não conferem
         </HelperText>
       </View>
-      <View style={{ marginTop: 20 }}>
+      <View>
         <Button mode="contained" onPress={handleRegister}>
           Registrar
         </Button>
