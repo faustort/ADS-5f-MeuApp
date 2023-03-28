@@ -44,7 +44,7 @@ export default function LoginScreen({ navigation }) {
         setError(error.message); // mostra a mensagem original do Firebase
         const errorCode = error.code; // obtém o código de erro do Firebase
         switch (
-          errorCode // verifica qual é o código de erro
+        errorCode // verifica qual é o código de erro
         ) {
           case "auth/email-already-in-use":
             setError("Esse email já está em uso por outro usuário."); // mostra uma mensagem humanizada
@@ -67,22 +67,26 @@ export default function LoginScreen({ navigation }) {
       <HelperText type="error"> {error} </HelperText>
       <View>
         <Paragraph>E-mail</Paragraph>
-        <TextInput
-          mode="outlined"
-          placeholder="Digite seu e-mail"
-          value={email}
-          onChangeText={setEmail}
-        />
+        <View>
+          <TextInput
+            mode="outlined"
+            placeholder="Digite seu e-mail"
+            value={email}
+            onChangeText={setEmail}
+            style={styles.maxWidth}
+          />
+        </View>
       </View>
       <View>
         <Paragraph>Senha</Paragraph>
 
         <TextInput
-          mode="flat"
+          mode="outlined"
           placeholder="Digite sua Senha"
           value={senha}
           onChangeText={setSenha}
           secureTextEntry={passwordVisible}
+          style={styles.maxWidth}
           right={
             <TextInput.Icon
               icon={passwordVisible ? "eye" : "eye-off"}
@@ -94,19 +98,20 @@ export default function LoginScreen({ navigation }) {
         />
       </View>
 
-      <View style={{ marginTop: 20 }}>
-        <Button mode="contained" onPress={handleRegister}>
-          Acessar
-        </Button>
-      </View>
-
-      <View style={{ marginTop: 20 }}>
-        <Button
-          mode="contained"
-          onPress={() => navigation.navigate("RegisterScreen")}
-        >
-          Registrar
-        </Button>
+      <View style={{ flexDirection: "row", gap: 15 }}>
+        <View style={{ marginTop: 20 }}>
+          <Button
+            mode="contained"
+            onPress={() => navigation.navigate("RegisterScreen")}
+          >
+            Registrar
+          </Button>
+        </View>
+        <View style={{ marginTop: 20 }}>
+          <Button mode="contained" onPress={handleRegister}>
+            Acessar
+          </Button>
+        </View>
       </View>
     </View>
   );

@@ -1,10 +1,15 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const width = Dimensions.get('window').width * .95;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  maxWidth: {
+    width: width,
   },
   containerH: {
     flexDirection: "column",
@@ -18,8 +23,8 @@ const styles = StyleSheet.create({
     flexBasis: "20%",
   },
   image: {
-    minWidth: "300px",
-    height: "300px",
+    minWidth: 300,
+    height: 300,
   },
 });
 
