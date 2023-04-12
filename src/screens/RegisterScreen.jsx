@@ -1,10 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
 import { View } from "react-native";
 import { Button, HelperText, Paragraph, TextInput } from "react-native-paper";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { auth } from "../config/firebase";
-
+import { auth, db } from "../config/firebase";
 import styles from "../utils/styles";
 export default function RegisterScreen() {
   const [email, setEmail] = useState("");
@@ -29,14 +28,38 @@ export default function RegisterScreen() {
     createUserWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         console.log(userCredential, "Usuário registrado com sucesso");
-        navigation.navigate("LoginScreen");
+
+        // Agora podemos adicionar mais dados ao banco de dados
+        // primeiro selecionamos a coleção qual desejamos
+        const collectionRef = collection(db, "usuarios");
+
+        // agora criamos um objeto com os dados que desejamos adicionar
+        // neste caso, o email do usuário e o uid do usuário
+        const dadosParaAdicionar = {
+          emailUsuario: email,
+          uid: userCredential.user.uid,
+        }
+
+        // agora podemos adicionar um documento a esta coleção
+        // o primeiro parâmetro é a coleção que desejamos
+        // o segundo parâmetro é um objeto com os dados que desejamos adicionar
+        const docRef = addDoc(
+          collectionRef,
+          dadosParaAdicionar
+        ).then((docRef) => {
+          console.log("Document written with ID: ", docRef.id);
+        }).catch((error) => {
+          console.error("Error adding document: ", error);
+        }).finally(() => {
+          navigation.navigate("LoginScreen");
+        });
       })
       .catch((error) => {
         setError(error.message); // mostra a mensagem original do Firebase
         const errorCode = error.code; // obtém o código de erro do Firebase
-        switch (
-        errorCode // verifica qual é o código de erro
-        ) {
+
+        // verifica qual é o código de erro
+        switch (errorCode) {
           case "auth/email-already-in-use":
             setError("Esse email já está em uso por outro usuário."); // mostra uma mensagem humanizada
             break;
@@ -47,7 +70,7 @@ export default function RegisterScreen() {
             setError("Essa senha é muito fraca.");
             break;
           default:
-            setError("Ocorreu um erro ao registrar o usuário.");
+            setError("Ocorreu um erro ao registrar o usuário." + error.message);
         }
       });
   }
@@ -62,7 +85,7 @@ export default function RegisterScreen() {
 
   return (
     <View style={styles.container}>
-      <Paragraph>Faça o seu Registro</Paragraph>
+      <Paragraph>Faça o seu Registro - v2</Paragraph>
       <HelperText type="error"> {error} </HelperText>
       <View>
         <Paragraph>E-mail</Paragraph>
@@ -76,7 +99,6 @@ export default function RegisterScreen() {
       </View>
       <View style={{ marginTop: 10 }}>
         <Paragraph>Senha</Paragraph>
-
         <TextInput
           mode="outlined"
           placeholder="Digite sua Senha"
@@ -84,7 +106,6 @@ export default function RegisterScreen() {
           onChangeText={setSenha}
           secureTextEntry={passwordVisible}
           style={styles.maxWidth}
-
           right={
             <TextInput.Icon
               icon={passwordVisible ? "eye" : "eye-off"}
