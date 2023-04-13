@@ -9,7 +9,18 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   maxWidth: {
-    width: width,
+    // width: width,
+    alignSelf: "stretch",
+    width: "100%",
+    flexDirection: "column"
+  },
+  containerInner: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    alignSelf: "stretch",
   },
   containerH: {
     flexDirection: "column",
