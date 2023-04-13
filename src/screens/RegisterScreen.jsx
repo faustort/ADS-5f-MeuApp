@@ -23,16 +23,16 @@ export default function RegisterScreen() {
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [error, setError] = useState(
     {
-      padrao: "",
-      cep: "",
-      endereco: "",
-      cidade: "",
-      estado: "",
-      bairro: "",
-      telefone: "",
-      email: "",
-      senha: "",
-      confirmarSenha: "",
+      padrao: false,
+      cep: false,
+      endereco: false,
+      cidade: false,
+      estado: false,
+      bairro: false,
+      telefone: false,
+      email: false,
+      senha: false,
+      confirmarSenha: false,
     }
   );
 
@@ -133,8 +133,8 @@ export default function RegisterScreen() {
     <View style={styles.container}>
       <ScrollView style={styles.containerInner}>
         <HelperText type="error"> {error.padrao} </HelperText>
-        <View style={styles.containerInner}>
-          <HelperText type="error"> {error.nome} </HelperText>
+        <View>
+          {error.nome && <HelperText type="error">{error.nome}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite seu nome"
@@ -143,8 +143,8 @@ export default function RegisterScreen() {
             style={styles.maxWidth}
           />
         </View>
-        <View style={styles.containerInner}>
-          <HelperText type="error"> {error.cep} </HelperText>
+        <View>
+          {error.cep && <HelperText type="error">{error.cep}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite seu CEP"
@@ -154,10 +154,8 @@ export default function RegisterScreen() {
             onBlur={handleCep}
           />
         </View>
-        <View
-          style={styles.containerInner}
-        >
-          <HelperText type="error"> {error.endereco} </HelperText>
+        <View>
+          {error.endereco && <HelperText type="error">{error.endereco}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite o endereço"
@@ -167,7 +165,7 @@ export default function RegisterScreen() {
           />
         </View>
         <View>
-          <HelperText type="error"> {error.bairro} </HelperText>
+          {error.bairro && <HelperText type="error">{error.bairro}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite o Bairro"
@@ -177,7 +175,8 @@ export default function RegisterScreen() {
           />
         </View>
         <View>
-          <HelperText type="error"> {error.cidade} - {error.estado}</HelperText>
+          {error.cidade && <HelperText type="error">{error.cidade}</HelperText>}
+          {error.estado && <HelperText type="error">{error.estado}</HelperText>}
           <View
             style={{
               ...styles.maxWidth,
@@ -202,7 +201,7 @@ export default function RegisterScreen() {
           </View>
         </View>
         <View>
-          <HelperText type="error"> {error.telefone} </HelperText>
+          {error.telefone && <HelperText type="error">{error.telefone}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite seu telefone"
@@ -212,7 +211,7 @@ export default function RegisterScreen() {
           />
         </View>
         <View>
-          <HelperText type="error"> {error.email} </HelperText>
+          {error.email && <HelperText type="error">{error.email}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite seu e-mail"
@@ -222,7 +221,7 @@ export default function RegisterScreen() {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <HelperText type="error"> {error.senha} </HelperText>
+          {error.senha && <HelperText type="error">{error.senha}</HelperText>}
           <TextInput
             mode="outlined"
             placeholder="Digite sua Senha"

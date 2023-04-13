@@ -16,11 +16,9 @@ const styles = StyleSheet.create({
   },
   containerInner: {
     flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
     width: "100%",
     alignSelf: "stretch",
+    paddingHorizontal: 20
   },
   containerH: {
     flexDirection: "column",
