@@ -130,142 +130,140 @@ export default function RegisterScreen() {
   }
 
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.containerInner}>
-        <HelperText type="error"> {error.padrao} </HelperText>
-        <View>
-          {error.nome && <HelperText type="error">{error.nome}</HelperText>}
+    <ScrollView style={styles.containerInner}>
+      <HelperText type="error"> {error.padrao} </HelperText>
+      <View>
+        {error.nome && <HelperText type="error">{error.nome}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite seu nome"
+          value={nome}
+          onChangeText={setNome}
+          style={styles.maxWidth}
+        />
+      </View>
+      <View>
+        {error.cep && <HelperText type="error">{error.cep}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite seu CEP"
+          value={cep}
+          onChangeText={setCep}
+          style={styles.maxWidth}
+          onBlur={handleCep}
+        />
+      </View>
+      <View>
+        {error.endereco && <HelperText type="error">{error.endereco}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite o endereço"
+          value={endereco}
+          onChangeText={setEndereco}
+          style={styles.maxWidth}
+        />
+      </View>
+      <View>
+        {error.bairro && <HelperText type="error">{error.bairro}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite o Bairro"
+          value={bairro}
+          onChangeText={setBairro}
+          style={styles.maxWidth}
+        />
+      </View>
+      <View>
+        {error.cidade && <HelperText type="error">{error.cidade}</HelperText>}
+        {error.estado && <HelperText type="error">{error.estado}</HelperText>}
+        <View
+          style={{
+            ...styles.maxWidth,
+            justifyContent: "space-between",
+            flexDirection: "row"
+          }}
+        >
           <TextInput
             mode="outlined"
-            placeholder="Digite seu nome"
-            value={nome}
-            onChangeText={setNome}
-            style={styles.maxWidth}
+            placeholder="Digite a Cidade"
+            value={cidade}
+            onChangeText={setCidade}
+            style={{ alignSelf: "stretch", flexBasis: "60%" }}
           />
-        </View>
-        <View>
-          {error.cep && <HelperText type="error">{error.cep}</HelperText>}
           <TextInput
             mode="outlined"
-            placeholder="Digite seu CEP"
-            value={cep}
-            onChangeText={setCep}
-            style={styles.maxWidth}
-            onBlur={handleCep}
+            placeholder="Digite o Estado"
+            value={estado}
+            onChangeText={setEstado}
+            style={{ alignSelf: "stretch", flexBasis: "38%" }}
           />
         </View>
-        <View>
-          {error.endereco && <HelperText type="error">{error.endereco}</HelperText>}
-          <TextInput
-            mode="outlined"
-            placeholder="Digite o endereço"
-            value={endereco}
-            onChangeText={setEndereco}
-            style={styles.maxWidth}
-          />
-        </View>
-        <View>
-          {error.bairro && <HelperText type="error">{error.bairro}</HelperText>}
-          <TextInput
-            mode="outlined"
-            placeholder="Digite o Bairro"
-            value={bairro}
-            onChangeText={setBairro}
-            style={styles.maxWidth}
-          />
-        </View>
-        <View>
-          {error.cidade && <HelperText type="error">{error.cidade}</HelperText>}
-          {error.estado && <HelperText type="error">{error.estado}</HelperText>}
-          <View
-            style={{
-              ...styles.maxWidth,
-              justifyContent: "space-between",
-              flexDirection: "row"
-            }}
-          >
-            <TextInput
-              mode="outlined"
-              placeholder="Digite a Cidade"
-              value={cidade}
-              onChangeText={setCidade}
-              style={{ alignSelf: "stretch", flexBasis: "60%" }}
+      </View>
+      <View>
+        {error.telefone && <HelperText type="error">{error.telefone}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite seu telefone"
+          value={telefone}
+          onChangeText={setTelefone}
+          style={styles.maxWidth}
+        />
+      </View>
+      <View>
+        {error.email && <HelperText type="error">{error.email}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite seu e-mail"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.maxWidth}
+        />
+      </View>
+      <View style={{ marginTop: 10 }}>
+        {error.senha && <HelperText type="error">{error.senha}</HelperText>}
+        <TextInput
+          mode="outlined"
+          placeholder="Digite sua Senha"
+          value={senha}
+          onChangeText={setSenha}
+          secureTextEntry={passwordVisible}
+          style={styles.maxWidth}
+          right={
+            <TextInput.Icon
+              icon={passwordVisible ? "eye" : "eye-off"}
+              size={20}
+              style={{ marginRight: 10 }}
+              onPress={() => setPasswordVisible(!passwordVisible)}
             />
-            <TextInput
-              mode="outlined"
-              placeholder="Digite o Estado"
-              value={estado}
-              onChangeText={setEstado}
-              style={{ alignSelf: "stretch", flexBasis: "38%" }}
+          }
+        />
+      </View>
+      <View style={{ marginTop: 10 }}>
+        <TextInput
+          mode="outlined"
+          placeholder="Confirme a Senha"
+          value={confirmarSenha}
+          onChangeText={setConfirmarSenha}
+          secureTextEntry={passwordVisible}
+          style={styles.maxWidth}
+          right={
+            <TextInput.Icon
+              icon={passwordVisible ? "eye" : "eye-off"}
+              size={20}
+              style={{ marginRight: 10 }}
+              onPress={() => setPasswordVisible(!passwordVisible)}
             />
-          </View>
-        </View>
-        <View>
-          {error.telefone && <HelperText type="error">{error.telefone}</HelperText>}
-          <TextInput
-            mode="outlined"
-            placeholder="Digite seu telefone"
-            value={telefone}
-            onChangeText={setTelefone}
-            style={styles.maxWidth}
-          />
-        </View>
-        <View>
-          {error.email && <HelperText type="error">{error.email}</HelperText>}
-          <TextInput
-            mode="outlined"
-            placeholder="Digite seu e-mail"
-            value={email}
-            onChangeText={setEmail}
-            style={styles.maxWidth}
-          />
-        </View>
-        <View style={{ marginTop: 10 }}>
-          {error.senha && <HelperText type="error">{error.senha}</HelperText>}
-          <TextInput
-            mode="outlined"
-            placeholder="Digite sua Senha"
-            value={senha}
-            onChangeText={setSenha}
-            secureTextEntry={passwordVisible}
-            style={styles.maxWidth}
-            right={
-              <TextInput.Icon
-                icon={passwordVisible ? "eye" : "eye-off"}
-                size={20}
-                style={{ marginRight: 10 }}
-                onPress={() => setPasswordVisible(!passwordVisible)}
-              />
-            }
-          />
-        </View>
-        <View style={{ marginTop: 10 }}>
-          <TextInput
-            mode="outlined"
-            placeholder="Confirme a Senha"
-            value={confirmarSenha}
-            onChangeText={setConfirmarSenha}
-            secureTextEntry={passwordVisible}
-            style={styles.maxWidth}
-            right={
-              <TextInput.Icon
-                icon={passwordVisible ? "eye" : "eye-off"}
-                size={20}
-                style={{ marginRight: 10 }}
-                onPress={() => setPasswordVisible(!passwordVisible)}
-              />
-            }
-          />
-          <HelperText type="error" visible={!checkIfPasswordsMatch}>
-            Não conferem
-          </HelperText>
-        </View>
-        <View>
-          <Button mode="contained" onPress={handleRegister}>
-            Registrar
-          </Button>
-        </View>
-      </ScrollView>
-    </View>
+          }
+        />
+        <HelperText type="error" visible={!checkIfPasswordsMatch}>
+          Não conferem
+        </HelperText>
+      </View>
+      <View>
+        <Button mode="contained" onPress={handleRegister}>
+          Registrar
+        </Button>
+      </View>
+    </ScrollView>
   );
 }
