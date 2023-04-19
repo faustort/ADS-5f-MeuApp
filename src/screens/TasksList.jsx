@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   View,
-  Text,
   FlatList,
   ActivityIndicator,
   ScrollView,
@@ -13,7 +12,7 @@ import {
   query,
 } from "firebase/firestore";
 import { app } from "../config/firebase";
-import { List } from "react-native-paper";
+import { List, TouchableRipple } from "react-native-paper";
 
 const tarefasRef = collection(getFirestore(app), "tarefas");
 
@@ -34,16 +33,36 @@ export default function TasksList() {
     return () => unsubscribe();
   }, []);
 
+
+  // exclude a task 
+  function excludeTask(id) {
+    console.log("Excluindo tarefa", id);
+    deleteDoc(doc(db, "tarefas", id))
+      .then(() => {
+        console.log("Tarefa excluída com sucesso");
+      })
+      .catch((error) => {
+        console.log("Erro ao excluir tarefa", error);
+      });
+  }
+
+
   const renderItem = ({ item }) => (
     <View>
       <List.Item
         title={item.titulo}
-        data={tasks}
         description={item.titulo}
-        left={(props) => <List.Icon {...props} icon="check" />}
+        onPress={() => console.log('Pressionado')}
+        left={(props) => (
+          <View style={{ flexDirection: 'row' }}>
+            <TouchableRipple onPress={() => excludeTask(item.id)} ><List.Icon {...props} icon="delete" /></TouchableRipple> 
+            <List.Icon {...props} icon="check" onPress={() => console.log('t')} />
+          </View>
+        )}
       />
     </View>
   );
+
 
   return (
     <ScrollView>

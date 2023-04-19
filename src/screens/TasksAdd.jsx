@@ -27,6 +27,7 @@ export default function TasksAdd() {
         console.log("Erro ao salvar tarefa", error);
       })
   }
+  
 
   function handleAddTask() {
     console.log("Adicionando tarefa");

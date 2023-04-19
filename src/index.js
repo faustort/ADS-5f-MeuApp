@@ -92,6 +92,14 @@ export function MBTNavigation() {
           tabBarIcon: "phone-in-talk",
         }}
       />
+      <MTB.Screen
+        name="TasksList"
+        component={TasksList}
+        options={{
+          title: "Tarefas",
+          tabBarIcon: "phone-in-talk",
+        }}
+      />
       {/* <MTB.Screen
         name="TasksAdd"
         component={TasksAdd}
