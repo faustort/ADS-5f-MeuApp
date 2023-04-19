@@ -37,9 +37,9 @@ export default function TasksList() {
   const renderItem = ({ item }) => (
     <View>
       <List.Item
-        title={item.name}
+        title={item.titulo}
         data={tasks}
-        description={item.name}
+        description={item.titulo}
         left={(props) => <List.Icon {...props} icon="check" />}
       />
     </View>

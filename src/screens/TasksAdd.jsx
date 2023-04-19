@@ -4,16 +4,19 @@ import { app } from "../config/firebase";
 import { Text, TextInput } from "react-native-paper";
 import { useState } from "react";
 
-const tarefas = collection(
-  getFirestore(app), "tarefas"
-);
+
 
 export default function TasksAdd() {
   const [task, setTask] = useState("");
+  
+  const tarefasRef = collection(
+    getFirestore(app), "tarefas"
+  );
+
 
   function saveTask(newTask) {
     console.log("Salvando tarefa", newTask);
-    addDoc(tarefas, {
+    addDoc(tarefasRef, {
       titulo: newTask,
       concluida: false,
     })

@@ -18,7 +18,7 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen">
+      <Stack.Navigator initialRouteName="MTBNavigation">
         <Stack.Screen
           component={SplashScreen}
           name="SplashScreen"
