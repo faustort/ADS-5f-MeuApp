@@ -1,9 +1,8 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
-import { View } from "react-native";
-import { Button, HelperText, Paragraph, TextInput } from "react-native-paper";
-import { ScrollView } from "react-native-web";
+import { ScrollView, View } from "react-native";
+import { Button, HelperText, TextInput } from "react-native-paper";
 import { auth, db } from "../config/firebase";
 import styles from "../utils/styles";
 export default function RegisterScreen() {

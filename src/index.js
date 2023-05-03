@@ -87,14 +87,6 @@ export function MBTNavigation() {
         }}
       />
       <MTB.Screen
-        name="Tasks"
-        component={Tasks}
-        options={{
-          title: "Tarefas",
-          tabBarIcon: "phone-in-talk",
-        }}
-      />
-      <MTB.Screen
         name="TasksAdicionar"
         component={AulaTasksAdicionar}
         options={{
