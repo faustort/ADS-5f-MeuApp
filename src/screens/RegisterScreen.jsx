@@ -69,15 +69,32 @@ export default function RegisterScreen() {
       .then((userCredential) => {
         console.log(userCredential, "Usuário registrado com sucesso");
 
+        const userUID = userCredential.user.uid;
+
+        // selecionar a coleção "tabela" que vamos trabalhar
         const collectionRef = collection(db, "usuarios");
 
         const dadosParaInserir = {
-          nomeDaPessoa: nome
+          nomeDaPessoa: nome,
+          telefoneDaPessoa: telefone,
+          cepDaPessoa: cep,
+          enderecoDaPessoa: endereco,
+          cidadeDaPessoa: cidade,
+          estadoDaPessoa: estado,
+          bairroDaPessoa: bairro,
+          emailDaPessoa: email,
+          userUID: userUID
         }
 
-        const docRef = addDoc(collectionRef, dadosParaInserir);
-
-        // navigation.navigate("LoginScreen");
+        // faço a inserção dos dados na tabela "usuarios"
+        const docRef = addDoc(collectionRef, dadosParaInserir)
+          .then((docRef) => {
+            console.log("Documento inserido com sucesso: ", docRef.id);
+            navigation.navigate("LoginScreen");
+          })
+          .catch((error) => {
+            console.log("Erro ao inserir o documento: ", error);
+          });
       })
       .catch((errorRes) => {
         setError({ ...error, padrao: errorRes.message }); // mostra a mensagem original do Firebase
