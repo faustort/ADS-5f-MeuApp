@@ -1,14 +1,12 @@
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer, useTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import SignOut from "./screens/SignOut";
 import { SplashScreen } from "./screens/SplashScreen";
-import Tasks from "./screens/Tasks";
 import AulaTasksAdicionar from "./screens/AulaTaskAdicionar";
 import AulaTaskListar from "./screens/AulaTaskListar";
 
@@ -68,14 +66,6 @@ export function MBTNavigation() {
           tabBarIcon: "android",
 
           title: "Inicio",
-        }}
-      />
-      <MTB.Screen
-        name="AboutScreen"
-        component={AboutScreen}
-        options={{
-          title: "Sobre",
-          tabBarIcon: "help",
         }}
       />
       <MTB.Screen
