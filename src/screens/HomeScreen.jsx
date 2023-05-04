@@ -1,6 +1,6 @@
 import { Image, Text, View } from "react-native";
 import styles from "../utils/styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
