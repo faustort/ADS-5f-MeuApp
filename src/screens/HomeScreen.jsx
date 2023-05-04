@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../config/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function HomeScreen() {
   const [user, setUser] = useState({});
@@ -57,6 +58,9 @@ export default function HomeScreen() {
 
         // seta o usuário na variável de estado user
         setUser(usuario)
+
+        AsyncStorage.setItem("usuario", JSON.stringify(usuario))
+          .then(() => console.log("Usuário salvo no AsyncStorage"))
 
       })
 
