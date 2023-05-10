@@ -26,7 +26,7 @@ export default function UserProfile() {
             <TextInput
                 label="Nome"
                 value={user.nomeDaPessoa}
-                onChangeText={(text) => setUser({ ...user, nomeDanomeDaPessoaPessoa: text })}
+                onChangeText={(text) => setUser({ ...user, nomeDaPessoa: text })}
             />
             <TextInput
                 label="E-mail"
