@@ -26,22 +26,28 @@ export default function UserProfile() {
             <TextInput
                 label="Nome"
                 value={user.nomeDaPessoa}
-                onChangeText={(text) => setUser({ ...user, nomeDaPessoa: text })}
+                onChangeText={(text) => setUser({ ...user, nomeDanomeDaPessoaPessoa: text })}
             />
             <TextInput
                 label="E-mail"
                 value={user.emailDaPessoa}
-                onChangeText={(text) => setUser({ ...user, email: text })}
+                onChangeText={(text) => setUser({ ...user, emailDaPessoa: text })}
+                disabled={true}
             />
             <TextInput
                 label="Telefone"
                 value={user.telefoneDaPessoa}
-                onChangeText={(text) => setUser({ ...user, telefone: text })}
+                onChangeText={(text) => setUser({ ...user, telefoneDaPessoa: text })}
             />
             <TextInput
                 label="Endereço"
                 value={user.enderecoDaPessoa}
-                onChangeText={(text) => setUser({ ...user, endereco: text })}
+                onChangeText={(text) => setUser({ ...user, enderecoDaPessoa: text })}
+            />
+            <TextInput
+                label="CEP"
+                value={user.cepDaPessoa}
+                onChangeText={(text) => setUser({ ...user, cepDaPessoa: text })}
             />
         </View>
     )
