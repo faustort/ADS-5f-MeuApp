@@ -1,6 +1,8 @@
 import { View } from "react-native";
-import { Text, TextInput } from "react-native-paper";
+import { Button, Text, TextInput } from "react-native-paper";
 import { useEffect, useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
 import styles from "../utils/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -17,6 +19,30 @@ export default function UserProfile() {
             estadoDaPessoa: "",
         }
     )
+
+    async function handleUpdate() {
+        try {
+            const usuarioId = user.userUID;
+            const docRef = doc(db, 'usuarios', usuarioId);
+            const updateTimestamp = await updateDoc(
+                docRef,
+                {
+                    nomeDaPessoa: user.nomeDaPessoa,
+                    emailDaPessoa: user.emailDaPessoa,
+                    telefoneDaPessoa: user.telefoneDaPessoa,
+                    bairroDaPessoa: user.bairroDaPessoa,
+                    cepDaPessoa: user.cepDaPessoa,
+                    cidadeDaPessoa: user.cidadeDaPessoa,
+                    estadoDaPessoa: user.estadoDaPessoa,
+                    userUID: user.userUID
+                }
+            );
+
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
 
     useEffect(() => {
         AsyncStorage.getItem("usuario")
@@ -89,6 +115,9 @@ export default function UserProfile() {
                     value={user.estadoDaPessoa}
                     onChangeText={(text) => setUser({ ...user, estadoDaPessoa: text })}
                 />
+                <Button
+                    onPress={handleUpdate}
+                >Atualizar meu perfil</Button>
             </View>
         </View >
     )
