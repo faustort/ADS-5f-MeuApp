@@ -10,6 +10,7 @@ import { SplashScreen } from "./screens/SplashScreen";
 import AulaTasksAdicionar from "./screens/AulaTaskAdicionar";
 import AulaTaskListar from "./screens/AulaTaskListar";
 import UserProfile from "./screens/UserProfile";
+import BuscarTarefa from "./screens/BuscarTarefa";
 
 // import TasksAdd from "./screens/TasksAdd";
 // import TasksList from "./screens/TasksList";
@@ -19,10 +20,17 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen">
+      <Stack.Navigator initialRouteName="BuscaTarefa">
         <Stack.Screen
           component={SplashScreen}
           name="SplashScreen"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          component={BuscarTarefa}
+          name="BuscaTarefa"
           options={{
             headerShown: false,
           }}

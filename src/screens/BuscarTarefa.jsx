@@ -6,26 +6,31 @@ import { db } from "../config/firebase";
 
 export default function BuscarTarefa() {
     const [nomeDaTarefa, setNomeDaTarefa] = useState("");
-    const [produtos, setProdutos] = useState([]);
+    const [tarefas, setTarefas] = useState([]);
 
 
-    async function queryProdutos() {
+    async function buscarTarefas() {
         try {
-            const produtosRef = collection(db, "produtos");
-            const queryProdutos = query(produtosRef, where("nomeDaTarefa", "==", nomeDaTarefa));
-            const querySnapshot = await getDocs(queryProdutos);
-            const produtos = [];
-            querySnapshot.forEach((doc) => {
-                produtos.push(doc.data());
-            });
-            setProdutos(produtos);
+            const tarefasRef = collection(db, "tarefas");
+            const queryTarefas = query(tarefasRef, where("nomeDaTarefa", "==", nomeDaTarefa));
+            const querySnapshot = await getDocs(queryTarefas);
+
+            const tarefasEncontradas = querySnapshot.docs.map((doc) => (
+                {
+                    id: doc.id,
+                    ...doc.data(),
+                }
+            )
+            );
+            console.log(tarefasEncontradas);
+            setTarefas(tarefasEncontradas);
         } catch (error) {
             console.log(error);
         }
     }
 
     useEffect(() => {
-        queryProdutos(nomeDaTarefa);
+        buscarTarefas();
     }, [nomeDaTarefa]);
 
     return (
@@ -37,7 +42,7 @@ export default function BuscarTarefa() {
                 onChangeText={setNomeDaTarefa}
             />
             <FlatList
-                data={produtos}
+                data={tarefas}
                 renderItem={({ item }) => <Text>{item.nomeDaTarefa}</Text>}
                 keyExtractor={(item) => item.id}
             />
