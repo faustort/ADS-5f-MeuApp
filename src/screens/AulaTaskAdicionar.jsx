@@ -19,6 +19,7 @@ export default function AulaTasksAdicionar() {
         addDoc(tarefasRef, data)
             .then((docRef) => {
                 console.log("Tarefa Adicionar com a ID: ", docRef.id)
+                setTarefa('')
             })
             .catch(
                 (error) => console.log(error)
@@ -27,9 +28,8 @@ export default function AulaTasksAdicionar() {
 
     return (
         <View
-            style={styles.container}
+            style={styles.containerInner}
         >
-            <Text>Adicionar Tarefa</Text>
             <TextInput
                 label="Tarefa"
                 mode="outlined"
@@ -42,6 +42,7 @@ export default function AulaTasksAdicionar() {
                         onPress={handleAddTask}
                     />
                 }
+                
             />
         </View>
     )

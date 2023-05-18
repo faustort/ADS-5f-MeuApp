@@ -12,7 +12,7 @@ import { useFocusEffect } from "@react-navigation/native";
  * @param {*} param0
  * @returns
  */
-export function SplashScreen({ navigation }) {
+export default function SplashScreen({ navigation }) {
   useFocusEffect(() => {
     // verifica junto ao Firebase se o usuário está logado no servidor
     // esta validação é realizada pela variável auth que vem do arquivo firebase.js

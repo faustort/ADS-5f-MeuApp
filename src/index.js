@@ -1,18 +1,14 @@
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer, useTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SplashScreen from "./screens/SplashScreen";
 import ContactScreen from "./screens/ContactScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import SignOut from "./screens/SignOut";
-import { SplashScreen } from "./screens/SplashScreen";
-import AulaTasksAdicionar from "./screens/AulaTaskAdicionar";
-import AulaTaskListar from "./screens/AulaTaskListar";
 import UserProfile from "./screens/UserProfile";
-
-// import TasksAdd from "./screens/TasksAdd";
-// import TasksList from "./screens/TasksList";
+import TarefasScreen from "./screens/TarefasScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -84,18 +80,10 @@ export function MBTNavigation() {
         }}
       />
       <MTB.Screen
-        name="TasksAdicionar"
-        component={AulaTasksAdicionar}
+        name="Tarefas"
+        component={TarefasScreen}
         options={{
-          title: "Add Tarefas",
-          tabBarIcon: "plus-circle",
-        }}
-      />
-      <MTB.Screen
-        name="TasksListar"
-        component={AulaTaskListar}
-        options={{
-          title: "Lista Tarefas",
+          title: "Tarefas",
           tabBarIcon: "format-list-bulleted",
         }}
       />

@@ -5,6 +5,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import styles from "../utils/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import UserProfileImagePicker from "./UserProfileImagePicker";
 
 export default function UserProfile() {
     const [user, setUser] = useState(
@@ -73,7 +74,9 @@ export default function UserProfile() {
                     }
                     variant="titleLarge"
                 >Edite seu perfil</Text>
-
+                <UserProfileImagePicker
+                    idUsuario={user.userUID}
+                />
                 <TextInput
                     label="Nome"
                     value={user.nomeDaPessoa}
@@ -115,7 +118,10 @@ export default function UserProfile() {
                     value={user.estadoDaPessoa}
                     onChangeText={(text) => setUser({ ...user, estadoDaPessoa: text })}
                 />
+
                 <Button
+                    mode="contained"
+                    style={{ maxWidth: 200, marginTop: 20, marginHorizontal: 'auto' }}
                     onPress={handleUpdate}
                 >Atualizar meu perfil</Button>
             </View>
